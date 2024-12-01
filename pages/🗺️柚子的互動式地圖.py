@@ -24,16 +24,12 @@ basemap_translations = {
     "OpenStreetMap": "開放街圖",
     "HYBRID": "混合圖"
 }
+# 獲取前 N 個底圖
+N = 5
+selected_basemaps = list(leafmap.basemaps.keys())[:N]
 
-# 列出清單並找出關鍵字
-selected_basemaps = list(basemap_translations.keys())
-translated_keys = [basemap_translations[bm] for bm in selected_basemaps]
-
-# 用戶界面選擇底圖（顯示翻譯名稱）
-selected_translated = st.sidebar.selectbox("選擇底圖", translated_keys)
-
-# 回應原始底圖名稱
-selected_basemap = selected_basemaps[translated_keys.index(selected_translated)]
+# 用戶界面選擇底圖
+selected = st.sidebar.selectbox("選擇底圖", selected_basemaps)
 
 with col2:
     selected_basemap = st.selectbox("選擇您的基本底圖：", translated_keys, index)
