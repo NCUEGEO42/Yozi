@@ -41,7 +41,7 @@ with col2:
 
 with col1:
     show_minimap = st.sidebar.checkbox("顯示小地圖", value=True)
-    map = leafmap.Map(locate_control=True, latlon_control=True, draw_export=True, minimap_control=show_minimap)
+    map = leafmap.Map(locate_control=False, latlon_control=True, draw_export=True, minimap_control=show_minimap)
     try:
         map.add_basemap(basemap)
     except KeyError:
