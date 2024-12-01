@@ -14,6 +14,9 @@ st.sidebar.info("選擇底圖來探索地圖功能。")
 # 顯示主標題
 st.title("柚子的互動式地圖")
 
+#中心點設在南投埔里
+center_lat, center_lon = 23.58, 120.58
+
 # 指定要顯示的底圖及其翻譯名稱
 basemap_translations = {
     "SATELLITE": "衛星圖",
