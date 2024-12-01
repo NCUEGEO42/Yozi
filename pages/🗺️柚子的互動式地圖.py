@@ -37,7 +37,7 @@ selected_basemap = selected_basemaps[translated_names.index(selected_translated)
 show_minimap = st.sidebar.checkbox("顯示小地圖", value=True)
 
 # 建立地圖並應用所選底圖
-col1, col2 = st.columns([5, 1])  # 定義兩欄布局
+col1, col2 = st.columns([6, 1])  # 定義兩欄布局
 with col1:
     m = leafmap.Map(latlon_control=True, draw_export=True, minimap_control=show_minimap)
     m.add_basemap(selected_basemap)
