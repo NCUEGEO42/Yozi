@@ -1,18 +1,14 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
 
-markdown = """
-Web App URL: <https://geotemplate.streamlit.app>
-GitHub Repository: <https://github.com/giswqs/streamlit-multipage-template>
-"""
-
 st.sidebar.title("關於")
 st.sidebar.markdown("""
 <div style="background-color: #e9ffc2; padding: 12px; border-radius: 6px;"> 
     <b>關於柚子作業的更多資訊</b>，<br>請點擊右方連結：<a href="https://youtu.be/dQw4w9WgXcQ?feature=shared" target="_blank">點我</a>
 </div>
 """, unsafe_allow_html=True)
-
+st.sidebar.markdown("---")
+st.sidebar.info("選擇底圖來探索地圖功能。")
 
 st.title("Interactive Map")
 
@@ -45,9 +41,9 @@ with col2:
 
 with col1:
     show_minimap = st.sidebar.checkbox("顯示小地圖", value=True)
-    m = leafmap.Map(locate_control=True, latlon_control=True, draw_export=True, minimap_control=show_minimap)
+    map = leafmap.Map(locate_control=True, latlon_control=True, draw_export=True, minimap_control=show_minimap)
     try:
-        m.add_basemap(basemap)
+        map.add_basemap(basemap)
     except KeyError:
         st.error("無法加載所選底圖，請選擇其他底圖。")
-    m.to_streamlit(height=720)
+    map.to_streamlit(height=720)
