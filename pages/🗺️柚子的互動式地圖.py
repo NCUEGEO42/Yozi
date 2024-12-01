@@ -20,7 +20,6 @@ col1, col2 = st.columns([5, 1])
 options = list(leafmap.basemaps.keys())
 index = options.index("SATELLITE")
 
-# 底圖選項命名為中文
 # 將底圖選項轉換為中文
 translated_options = {
     "SATELLITE": "衛星圖",
@@ -41,12 +40,14 @@ translated_options = {
 translated_keys = [translated_options.get(opt, opt) for opt in options]
 
 with col2:
-
-    basemap = st.selectbox("選擇您的基本底圖：", options, index)
-
+    selected_basemap = st.selectbox("選擇您的基本底圖：", translated_keys, index)
+    basemap = options[translated_keys.index(selected_basemap)]  # 獲取原始鍵值
 
 with col1:
-
-    m = leafmap.Map(locate_control=True, latlon_control=True, draw_export=True, minimap_control=True)
-    m.add_basemap(basemap)
+    show_minimap = st.sidebar.checkbox("顯示小地圖", value=True)
+    m = leafmap.Map(locate_control=True, latlon_control=True, draw_export=True, minimap_control=show_minimap)
+    try:
+        m.add_basemap(basemap)
+    except KeyError:
+        st.error("無法加載所選底圖，請選擇其他底圖。")
     m.to_streamlit(height=720)
