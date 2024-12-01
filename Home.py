@@ -1,40 +1,47 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    page_title="柚子的作業", #網頁名稱
+    page_icon="🍐", #網頁icon
+    layout="wide", #內容顯示在頁面中央
+    initial_sidebar_state="collapsed" #側邊欄預設收起
+)
 
 # Customize the sidebar
 markdown = """
-Web App URL: <https://geotemplate.streamlit.app>
-GitHub Repository: <https://github.com/giswqs/streamlit-multipage-template>
+A Streamlit map template
+<https://github.com/opengeos/streamlit-map-template>
 """
 
-st.sidebar.title("About")
-st.sidebar.info(markdown)
-logo = "https://i.imgur.com/UbOXYAU.png"
-st.sidebar.image(logo)
+st.sidebar.title("關於") #側欄標題名稱
+st.sidebar.markdown("""
+<div style="background-color: #e9ffc2; padding: 12px; border-radius: 6px;"> 
+    <b>關於柚子作業的更多資訊</b>，<br>請點擊右方連結：<a href="https://youtu.be/dQw4w9WgXcQ?feature=shared" target="_blank">點我</a>
+</div>
+""", unsafe_allow_html=True) #側欄文字背景顏色
+#預設情況下，Streamlit 禁止 HTML，需設定 unsafe_allow_html=True 來啟用 HTML 標籤。
 
-# Customize page title
-st.title("Streamlit for Geospatial Applications")
+title = """
+<div style="text-align: center; font-size: 32px; font-weight: bold; color: green; background-color: #e9ffc2;">
+    您好，歡迎來到「柚子的作業」官網。
+</div>
+"""
+st.markdown(title, unsafe_allow_html=True)
+#Streamlit的st.header不支援內建文字置中，因此必須改用title。
 
-st.markdown(
-    """
-    This multipage app template demonstrates various interactive web apps created using [streamlit](https://streamlit.io) and [leafmap](https://leafmap.org). It is an open-source project and you are very welcome to contribute to the [GitHub repository](https://github.com/giswqs/streamlit-multipage-template).
-    """
-)
-
-st.header("Instructions")
+st.markdown("<br>", unsafe_allow_html=True)  # 添加空白區域
 
 markdown = """
-1. For the [GitHub repository](https://github.com/giswqs/streamlit-multipage-template) or [use it as a template](https://github.com/giswqs/streamlit-multipage-template/generate) for your own project.
-2. Customize the sidebar by changing the sidebar text and logo in each Python files.
-3. Find your favorite emoji from https://emojipedia.org.
-4. Add a new app to the `pages/` directory with an emoji in the file name, e.g., `1_🚀_Chart.py`.
-
+<div style="text-align: center; font-size: 18px;">
+    在這邊，我們為您準備了精美的作業。請您慢慢享用。
+</div>
 """
 
-st.markdown(markdown)
+st.markdown(markdown, unsafe_allow_html=True)
 
-m = leafmap.Map(minimap_control=True)
-m.add_basemap("OpenTopoMap")
-m.to_streamlit(height=500)
+st.markdown("<br>", unsafe_allow_html=True)  # 添加空白區域
+
+map = leafmap.Map(minimap_control=True)
+map.add_basemap("SATELLITE")
+map.to_streamlit(height=720)
