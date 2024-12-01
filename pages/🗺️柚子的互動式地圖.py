@@ -1,6 +1,7 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
 
+# 側欄內容
 st.sidebar.title("關於")
 st.sidebar.markdown("""
 <div style="background-color: #e9ffc2; padding: 12px; border-radius: 6px;"> 
@@ -10,13 +11,10 @@ st.sidebar.markdown("""
 st.sidebar.markdown("---")
 st.sidebar.info("選擇底圖來探索地圖功能。")
 
-st.title("Interactive Map")
+# 顯示主標題
+st.title("柚子的互動式地圖")
 
-col1, col2 = st.columns([5, 1])
-options = list(leafmap.basemaps.keys())
-index = options.index("SATELLITE")
-
-# 將底圖選項轉換為中文
+# 指定要顯示的底圖及其翻譯名稱
 basemap_translations = {
     "SATELLITE": "衛星圖",
     "ROADMAP": "道路圖",
@@ -24,22 +22,23 @@ basemap_translations = {
     "OpenStreetMap": "開放街圖",
     "HYBRID": "混合圖"
 }
-# 獲取前 N 個底圖
-N = 5
-selected_basemaps = list(leafmap.basemaps.keys())[:N]
 
-# 用戶界面選擇底圖
-selected = st.sidebar.selectbox("選擇底圖", selected_basemaps)
+# 提取底圖關鍵字
+selected_basemaps = list(basemap_translations.keys())
+translated_names = [basemap_translations[bm] for bm in selected_basemaps]
 
-with col2:
-    selected_basemap = st.selectbox("選擇您的基本底圖：", translated_keys, index)
-    basemap = options[translated_keys.index(selected_basemap)]  # 獲取原始鍵值
+# 介面選擇底圖（顯示翻譯名稱）
+selected_translated = st.sidebar.selectbox("請選擇底圖：", translated_names)
 
+# 回應原始底圖名稱
+selected_basemap = selected_basemaps[translated_names.index(selected_translated)]
+
+# 顯示小地圖的選項
+show_minimap = st.sidebar.checkbox("顯示小地圖", value=True)
+
+# 建立地圖並應用所選底圖
+col1, col2 = st.columns([5, 1])  # 定義兩欄布局
 with col1:
-    show_minimap = st.sidebar.checkbox("顯示小地圖", value=True)
-    map = leafmap.Map(locate_control=True, latlon_control=True, draw_export=True, minimap_control=show_minimap)
-    try:
-        map.add_basemap(basemap)
-    except KeyError:
-        st.error("無法加載所選底圖，請選擇其他底圖。")
-    map.to_streamlit(height=720)
+    m = leafmap.Map(latlon_control=True, draw_export=True, minimap_control=show_minimap)
+    m.add_basemap(selected_basemap)
+    m.to_streamlit(height=720)
