@@ -18,6 +18,7 @@ index = options.index("SATELLITE")
 
 # 將底圖選項轉換為中文
 translated_options = {
+    "OpenStreetMap": "開放街圖",
     "SATELLITE": "衛星圖",
     "ROADMAP": "道路圖",
     "HYBRID": "混合圖",
