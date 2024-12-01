@@ -6,10 +6,12 @@ Web App URL: <https://geotemplate.streamlit.app>
 GitHub Repository: <https://github.com/giswqs/streamlit-multipage-template>
 """
 
-st.sidebar.title("About")
-st.sidebar.info(markdown)
-logo = "https://i.imgur.com/UbOXYAU.png"
-st.sidebar.image(logo)
+st.sidebar.title("關於")
+st.sidebar.markdown("""
+<div style="background-color: #e9ffc2; padding: 12px; border-radius: 6px;"> 
+    <b>關於柚子作業的更多資訊</b>，<br>請點擊右方連結：<a href="https://youtu.be/dQw4w9WgXcQ?feature=shared" target="_blank">點我</a>
+</div>
+""", unsafe_allow_html=True)
 
 
 st.title("Interactive Map")
