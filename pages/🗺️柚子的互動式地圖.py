@@ -30,8 +30,6 @@ markdown = """
 """
 st.markdown(markdown, unsafe_allow_html=True)
 
-with st.expander("查看程式碼"):
-
 st.markdown("<br>", unsafe_allow_html=True)  # 添加空白區域
 
 #中心點設在南投埔里
