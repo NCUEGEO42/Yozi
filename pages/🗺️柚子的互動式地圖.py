@@ -22,7 +22,7 @@ index = options.index("SATELLITE")
 
 with col2:
 
-    basemap = st.selectbox("Select a basemap:", options, index)
+    basemap = st.selectbox("選擇您的基本底圖：", options, index)
 
 
 with col1:
