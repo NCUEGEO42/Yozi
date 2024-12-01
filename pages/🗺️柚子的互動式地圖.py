@@ -14,6 +14,15 @@ st.sidebar.info("選擇底圖來探索地圖功能。")
 # 顯示主標題
 st.title("柚子的互動式地圖")
 
+# 添加空白區域
+st.markdown("<br>", unsafe_allow_html=True) 
+
+markdown = """
+<div style="text-align: center; font-size: 18px;">
+    這個互動式地圖真是不錯，您說是吧?
+</div>
+"""
+
 #中心點設在南投埔里
 center_lat, center_lon = 23.58, 120.58
 
