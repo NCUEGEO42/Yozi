@@ -17,24 +17,23 @@ options = list(leafmap.basemaps.keys())
 index = options.index("SATELLITE")
 
 # 將底圖選項轉換為中文
-translated_options = {
-    "OpenStreetMap": "開放街圖",
+basemap_translations = {
     "SATELLITE": "衛星圖",
     "ROADMAP": "道路圖",
-    "HYBRID": "混合圖",
     "TERRAIN": "地形圖",
-    "FWS NWI Wetlands": "美國濕地圖",
-    "FWS NWI Wetlands Raster": "美國濕地圖(網格)",
-    "NLCD 2021 CONUS Land Cover": "美國2021年土地覆蓋圖",
-    "NLCD 2019 CONUS Land Cover": "美國2019年土地覆蓋圖",
-    "NLCD 2016 CONUS Land Cover": "美國2016年土地覆蓋圖",
-    "NLCD 2013 CONUS Land Cover": "美國2013年土地覆蓋圖",
-    "NLCD 2011 CONUS Land Cover": "美國2011年土地覆蓋圖",
-    "NLCD 2008 CONUS Land Cover": "美國2008年土地覆蓋圖",
-    "NLCD 2006 CONUS Land Cover": "美國2006年土地覆蓋圖",
-    "NLCD 2004 CONUS Land Cover": "美國2004年土地覆蓋圖",
+    "OpenStreetMap": "開放街圖",
+    "HYBRID": "混合圖"
 }
-translated_keys = [translated_options.get(opt, opt) for opt in options]
+
+# 列出清單並找出關鍵字
+selected_basemaps = list(basemap_translations.keys())
+translated_keys = [basemap_translations[bm] for bm in selected_basemaps]
+
+# 用戶界面選擇底圖（顯示翻譯名稱）
+selected_translated = st.sidebar.selectbox("選擇底圖", translated_keys)
+
+# 回應原始底圖名稱
+selected_basemap = selected_basemaps[translated_keys.index(selected_translated)]
 
 with col2:
     selected_basemap = st.selectbox("選擇您的基本底圖：", translated_keys, index)
