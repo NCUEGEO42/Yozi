@@ -17,7 +17,7 @@ st.sidebar.markdown("""
 # 標題
 title = """
 <div style="text-align: center; font-size: 32px; font-weight: bold; color: green; background-color: #e9ffc2;">
-    柚子的互動式地圖-人口
+    柚子的互動式地圖-縣市總人口數量(自然間斷法)
 </div>
 """
 st.markdown(title, unsafe_allow_html=True)
@@ -59,14 +59,15 @@ with st.expander("顯示程式碼與地圖"):
             fill_color='YlOrRd',   # 使用漸層顏色
             fill_opacity=0.65,
             line_opacity=0.5,
-            legend_name='人口數量'
+            legend_name='縣市總人口數量',
+            scheme='Jenks'
         ).add_to(map)
 
         # 點擊事件：顯示縣市訊息
         def on_click(event):
             county_name = event['properties']['COUNTYNAME']  # COUNTYNAME 是包含縣市名稱的欄位
             population = event['properties']['P_CNT']  # 擷取人口數量index
-            popup_content = f"<b>縣市名稱:</b> {county_name}<br><b>人口數量:</b> {population}"
+            popup_content = f"<b>縣市名稱:</b> {county_name}<br><b>縣市總人口數量:</b> {population}"
             popup = Popup(popup_content, max_width=300)
             popup.add_to(event.target)  # 為點擊的區域添加小視窗
 
