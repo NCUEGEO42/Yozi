@@ -33,7 +33,7 @@ st.markdown(markdown, unsafe_allow_html=True)
 st.markdown("<br>", unsafe_allow_html=True)  # 添加空白區域
 
 #中心點設在南投埔里
-center_lat, center_lon = 23.58, 121.08
+center_lat, center_lon = 23.5825, 120.5855
 
 # 指定要顯示的底圖及其翻譯名稱
 basemap_translations = {
