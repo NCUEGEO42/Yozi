@@ -11,7 +11,7 @@ st.sidebar.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-st.title("互動式地圖-縣市人口(2024.12.2 V.1)")
+st.title("互動式地圖-縣市人口(2024.12.2　V.1)")
 
 with st.expander("顯示程式碼"):
     with st.echo():
