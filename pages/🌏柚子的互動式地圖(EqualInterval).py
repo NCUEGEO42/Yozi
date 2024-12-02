@@ -17,7 +17,7 @@ st.sidebar.markdown("""
 # 標題
 title = """
 <div style="text-align: center; font-size: 32px; font-weight: bold; color: green; background-color: #e9ffc2;">
-    柚子的互動式地圖-縣市總人口數量
+    柚子的互動式地圖-縣市總人口數量(等間距法)
 </div>
 """
 st.markdown(title, unsafe_allow_html=True)
