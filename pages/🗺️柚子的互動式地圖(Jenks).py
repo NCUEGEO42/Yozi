@@ -77,21 +77,21 @@ with st.expander("顯示程式碼與地圖"):
         # 顯示地圖
         map.to_streamlit(height=720)
 
-#st.markdown("<br>", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
 
         # 置中顯示屬性資料表格
-#st.markdown(
+st.markdown(
             """
             <div style="text-align: center;">
                 <h3>縣市人口數量資料表</h3>
             </div>
             """, unsafe_allow_html=True
         )
-#st.markdown(
+st.markdown(
             """
             <div style="display: flex; justify-content: center;">
                 <div style="width: 60%;">
             """, unsafe_allow_html=True
         )
-#st.dataframe(gdf[['COUNTYNAME', 'P_CNT']], use_container_width=True)
-#st.markdown("</div></div>", unsafe_allow_html=True)
+st.dataframe(gdf[['COUNTYNAME', 'P_CNT']], use_container_width=True)
+st.markdown("</div></div>", unsafe_allow_html=True)
