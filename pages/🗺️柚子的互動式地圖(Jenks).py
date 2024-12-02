@@ -77,6 +77,8 @@ with st.expander("顯示程式碼與地圖"):
         # 顯示地圖
         map.to_streamlit(height=720)
 
+        st.markdown("<br>", unsafe_allow_html=True)
+
         # 置中顯示屬性資料表格
         st.markdown(
             """
