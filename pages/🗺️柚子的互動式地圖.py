@@ -1,12 +1,8 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
+import geopandas as gpd
 
 st.set_page_config(layout="wide")
-
-markdown = """
-Web App URL: <https://geotemplate.streamlit.app>
-GitHub Repository: <https://github.com/giswqs/streamlit-multipage-template>
-"""
 
 st.sidebar.title("關於")
 st.sidebar.markdown("""
@@ -15,7 +11,7 @@ st.sidebar.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-st.title("互動式地圖-縣市人口")
+st.title("互動式地圖-縣市人口(2024.12.2 V.1)")
 
 with st.expander("顯示程式碼"):
     with st.echo():
