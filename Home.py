@@ -15,7 +15,7 @@ st.sidebar.info("選擇底圖來探索地圖功能。")
 # 標題
 title = """
 <div style="text-align: center; font-size: 32px; font-weight: bold; color: green; background-color: #e9ffc2;">
-    柚子的家（基本底圖）。
+    柚子的家（基本底圖）
 </div>
 """
 st.markdown(title, unsafe_allow_html=True)
