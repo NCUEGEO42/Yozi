@@ -60,7 +60,7 @@ with st.expander("顯示程式碼與地圖"):
             fill_opacity=0.65,
             line_opacity=0.5,
             legend_name='縣市總人口數量',
-            scheme='Jenks'
+            scheme='EqualInterval'
         ).add_to(map)
 
         # 點擊事件：顯示縣市訊息
