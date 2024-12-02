@@ -12,14 +12,13 @@ st.sidebar.markdown("""
 st.sidebar.markdown("---")
 st.sidebar.info("選擇底圖來探索地圖功能。")
 
-#標題
+# 標題
 title = """
 <div style="text-align: center; font-size: 32px; font-weight: bold; color: green; background-color: #e9ffc2;">
     柚子的互動式地圖。
 </div>
 """
 st.markdown(title, unsafe_allow_html=True)
-#Streamlit的st.header不支援內建文字置中，因此必須改用title。
 
 st.markdown("<br>", unsafe_allow_html=True)  # 添加空白區域
 
@@ -32,7 +31,7 @@ st.markdown(markdown, unsafe_allow_html=True)
 
 st.markdown("<br>", unsafe_allow_html=True)  # 添加空白區域
 
-#中心點設在南投埔里
+# 中心點設在南投埔里
 center_lat, center_lon = 23.5825, 120.5855
 
 # 指定要顯示的底圖及其翻譯名稱
@@ -57,9 +56,22 @@ selected_basemap = selected_basemaps[translated_names.index(selected_translated)
 # 顯示小地圖的選項
 show_minimap = st.sidebar.checkbox("顯示小地圖", value=True)
 
+# 輸入 GeoJSON URL
+geojson_url = st.sidebar.text_input("請輸入 GeoJSON 的網址：", "")
+
 # 建立地圖並應用所選底圖
 col1, col2 = st.columns([4, 1])  # 定義兩欄布局
 with col1:
-    map = leafmap.Map(center=[center_lat, center_lon], zoom=8,latlon_control=True, draw_export=True, minimap_control=show_minimap)
+    map = leafmap.Map(center=[center_lat, center_lon], zoom=8, latlon_control=True, draw_export=True, minimap_control=show_minimap)
     map.add_basemap(selected_basemap)
+    
+    # 如果輸入了有效的 URL，嘗試讀取並在地圖上添加資料
+    if geojson_url:
+        try:
+            geo_data = gpd.read_file(geojson_url)
+            map.add_gdf(geo_data, layer_name="您輸入的 GeoJSON 資料")
+            st.success("GeoJSON 資料已成功加載~")
+        except Exception as e:
+            st.error(f"加載 GeoJSON 資料失敗：{e}")
+    
     map.to_streamlit(height=720)
