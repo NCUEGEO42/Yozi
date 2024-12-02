@@ -33,7 +33,7 @@ st.markdown(markdown, unsafe_allow_html=True)
 st.markdown("<br>", unsafe_allow_html=True)  # 添加空白區域
 
 #中心點設在南投埔里
-center_lat, center_lon = 23.58, 120.58
+center_lat, center_lon = 23.58, 121.58
 
 # 指定要顯示的底圖及其翻譯名稱
 basemap_translations = {
@@ -60,6 +60,6 @@ show_minimap = st.sidebar.checkbox("顯示小地圖", value=True)
 # 建立地圖並應用所選底圖
 col1, col2 = st.columns([4, 1])  # 定義兩欄布局
 with col1:
-    map = leafmap.Map(center=[center_lat, center_lon], zoom=4,latlon_control=True, draw_export=True, minimap_control=show_minimap)
+    map = leafmap.Map(center=[center_lat, center_lon], zoom=8,latlon_control=True, draw_export=True, minimap_control=show_minimap)
     map.add_basemap(selected_basemap)
     map.to_streamlit(height=720)
