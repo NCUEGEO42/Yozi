@@ -11,7 +11,25 @@ st.sidebar.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-st.title("互動式地圖-縣市人口(2024.12.2　V.1)")
+# 標題
+title = """
+<div style="text-align: center; font-size: 32px; font-weight: bold; color: green; background-color: #e9ffc2;">
+    柚子的互動式地圖-人口
+</div>
+"""
+st.markdown(title, unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)  # 添加空白區域
+
+markdown = """
+<div style="text-align: center; font-size: 18px;">
+    版本：2024.12.01　V.1
+</div>
+"""
+st.markdown(markdown, unsafe_allow_html=True)
+
+st.markdown("<br>", unsafe_allow_html=True)  # 添加空白區域
+
 
 with st.expander("顯示程式碼"):
     with st.echo():
