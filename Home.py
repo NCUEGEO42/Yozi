@@ -15,7 +15,7 @@ st.sidebar.info("選擇底圖來探索地圖功能。")
 # 標題
 title = """
 <div style="text-align: center; font-size: 32px; font-weight: bold; color: green; background-color: #e9ffc2;">
-    柚子的互動式地圖。
+    柚子的家（基本底圖）。
 </div>
 """
 st.markdown(title, unsafe_allow_html=True)
@@ -24,7 +24,7 @@ st.markdown("<br>", unsafe_allow_html=True)  # 添加空白區域
 
 markdown = """
 <div style="text-align: center; font-size: 18px;">
-    這張地圖挺不錯的，您說是吧?
+    歡迎來到柚子的家，在您眼前的是基本底圖，功能在左下角，請慢慢享用。
 </div>
 """
 st.markdown(markdown, unsafe_allow_html=True)
